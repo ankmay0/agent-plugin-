@@ -4,23 +4,15 @@ A VS Code extension that adds a **`@portfolio-builder`** participant to GitHub
 Copilot Chat. Ask it to build your portfolio and it generates a polished,
 responsive personal website in plain HTML/CSS/JS — no frameworks, no build step.
 
-## Install
+## Install (one command, no account needed)
 
-### Once published to the VS Code Marketplace (one command)
-
-```cmd
-code --install-extension ankmay0.portfolio-builder
-```
-
-### From the packaged .vsix (before publishing)
-
-Download `portfolio-builder-0.0.1.vsix` from this repo, then:
+Paste this into **cmd** — it downloads the extension and installs it into VS Code:
 
 ```cmd
-code --install-extension portfolio-builder-0.0.1.vsix
+curl -L -o portfolio-builder.vsix https://github.com/ankmay0/agent-plugin-/raw/main/portfolio-builder-0.0.1.vsix && code --install-extension portfolio-builder.vsix
 ```
 
-Either way: **reload VS Code**, open **Copilot Chat**, and type:
+Then **reload VS Code**, open **Copilot Chat**, and type:
 
 ```
 @portfolio-builder build my portfolio
