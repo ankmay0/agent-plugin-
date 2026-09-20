@@ -1,0 +1,6 @@
+{
+  "name": "portfolio-builder",
+  "description": "Agent that builds a polished, responsive portfolio website in plain HTML/CSS/JS",
+  "version": "1.0.0",
+  "author": { "name": "ankmay0" }
+}
