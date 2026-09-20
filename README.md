@@ -1,45 +1,60 @@
-# portfolio-builder — GitHub Copilot custom agent
+# Portfolio Builder — Copilot Chat extension
 
-A [GitHub Copilot custom agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
-that builds a polished, responsive personal portfolio website in plain
-HTML/CSS/JS — no build step, no frameworks. The output opens by
-double-clicking `index.html` and deploys to GitHub Pages, Netlify, or any
-static host.
+A VS Code extension that adds a **`@portfolio-builder`** participant to GitHub
+Copilot Chat. Ask it to build your portfolio and it generates a polished,
+responsive personal website in plain HTML/CSS/JS — no frameworks, no build step.
 
-## The agent
+## Install
 
-[`.github/agents/portfolio-builder.agent.md`](.github/agents/portfolio-builder.agent.md)
+### Once published to the VS Code Marketplace (one command)
 
-## Use it in your own project
-
-Copilot discovers custom agents from a `.github/agents/` folder in the repo
-you have open. So:
-
-1. In your project repo, create the folder `.github/agents/`.
-2. Copy `portfolio-builder.agent.md` into it.
-3. Reload VS Code.
-4. Open **Copilot Chat** → the **agent picker** (mode dropdown at the top of
-   the chat box) → select **portfolio-builder**.
-5. Say **"build my portfolio."**
-
-Quick copy from this repo:
-
-```bash
-mkdir -p .github/agents
-curl -o .github/agents/portfolio-builder.agent.md \
-  https://raw.githubusercontent.com/ankmay0/agent-plugin-/main/.github/agents/portfolio-builder.agent.md
+```cmd
+code --install-extension ankmay0.portfolio-builder
 ```
 
-## Make it available across all your org's repos
+### From the packaged .vsix (before publishing)
 
-Put the file at `/agents/portfolio-builder.agent.md` in your organization's
-special `.github` repository. It then appears in the Copilot Chat agent picker
-in **every** repo in the org — no per-project copying needed.
+Download `portfolio-builder-0.0.1.vsix` from this repo, then:
 
-## Notes
+```cmd
+code --install-extension portfolio-builder-0.0.1.vsix
+```
 
-- Repo-level agents (`.github/agents/`) take precedence over org-level agents
-  with the same file name.
-- The markdown body is the agent's system prompt (max 30,000 characters).
-- Copilot uses whichever model you've selected in Copilot Chat; the agent file
-  doesn't pin one.
+Either way: **reload VS Code**, open **Copilot Chat**, and type:
+
+```
+@portfolio-builder build my portfolio
+```
+
+It will ask for your details (name, bio, skills, projects, contact, theme),
+then generate `index.html`, `styles.css`, and `script.js` you can copy into a
+folder and open in a browser.
+
+## Requirements
+
+- VS Code 1.95+
+- GitHub Copilot + Copilot Chat installed and signed in (the extension uses the
+  model you've selected in Copilot Chat).
+
+## Publishing (for the maintainer)
+
+```cmd
+npm install
+npm run compile
+npx @vscode/vsce package        # builds the .vsix
+npx @vscode/vsce publish        # publishes to the Marketplace (needs a publisher + token)
+```
+
+Create a free publisher at https://marketplace.visualstudio.com/manage and a
+Personal Access Token per the
+[vsce docs](https://code.visualstudio.com/api/working-with-extensions/publishing-extension).
+
+## Development
+
+```cmd
+npm install
+npm run watch
+```
+
+Press **F5** in VS Code to launch an Extension Development Host, then use
+`@portfolio-builder` in Copilot Chat there.

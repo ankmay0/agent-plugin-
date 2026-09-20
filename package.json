@@ -1,0 +1,41 @@
+{
+  "name": "portfolio-builder",
+  "displayName": "Portfolio Builder",
+  "description": "A Copilot Chat participant that builds a polished, responsive portfolio website in plain HTML/CSS/JS.",
+  "version": "0.0.1",
+  "publisher": "ankmay0",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ankmay0/agent-plugin-.git"
+  },
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "portfolio-builder.chat",
+        "name": "portfolio-builder",
+        "fullName": "Portfolio Builder",
+        "description": "Build a portfolio website in plain HTML/CSS/JS",
+        "isSticky": true
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.95.0",
+    "typescript": "^5.5.0"
+  }
+}
